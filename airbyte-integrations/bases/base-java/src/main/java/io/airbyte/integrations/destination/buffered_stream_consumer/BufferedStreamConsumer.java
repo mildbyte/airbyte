@@ -69,7 +69,7 @@ import org.slf4j.LoggerFactory;
  *
  * <p>
  * Throughout the lifecycle of the consumer, messages get promoted from buffered to flushed to
- * committed. A record when it is received is immediately buffered. When the buffer fills up, all
+ * committed. A record message when it is received is immediately buffered. When the buffer fills up, all
  * buffered records are flushed out of memory using the user-provided recordWriter. When this flush
  * happens, a state message is moved from pending to flushed. On close, if the user-provided onClose
  * function is successful, then the flushed state record is considered committed and is then
