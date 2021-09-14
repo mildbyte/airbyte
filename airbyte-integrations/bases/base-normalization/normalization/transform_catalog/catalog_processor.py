@@ -153,6 +153,11 @@ class CatalogProcessor:
             message = f"'json_schema'.'properties' are not defined for stream {stream_name}"
             properties = get_field(get_field(stream_config, "json_schema", message), "properties", message)
 
+            # why does the file connector do this
+            # sometimes there's a "properties" in properties
+            if "properties" in properties and isinstance(properties["properties"], dict):
+                properties = properties["properties"]
+
             from_table = "source('{}', '{}')".format(schema_name, raw_table_name)
 
             stream_processor = StreamProcessor.create(
